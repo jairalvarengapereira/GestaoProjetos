@@ -8,4 +8,4 @@
   status = 200
 
 [context.production.environment]
-  VITE_API_URL = "https://agendei-api-53h2.onrender.com"
+  VITE_API_URL = "https://gestaoprojetos.fly.dev"
