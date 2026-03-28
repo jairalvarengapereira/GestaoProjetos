@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Plus, LogOut, Server, Database, Globe, BookOpen, Edit, Trash2, Search, User, Users, Mail } from 'lucide-react'
 
-const API_URL = '/api'
+const API_URL = import.meta.env.VITE_API_URL || '/api'
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'))

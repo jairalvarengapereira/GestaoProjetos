@@ -1,0 +1,15 @@
+[build]
+  command = "npm install"
+  publish = "."
+
+[functions]
+  directory = "."
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[context.production.environment]
+  DATABASE_URL = "postgres://postgres:postgres@localhost:5432/gestaoprojetos"
+  JWT_SECRET = "infra-catalogo-secret-key-2024"
