@@ -366,7 +366,7 @@ function App() {
       const method = editando ? 'PUT' : 'POST'
       const url = editando ? `${API_URL}/sistemas/${editando}` : `${API_URL}/sistemas`
 
-      await fetch(url, {
+      const res = await fetch(url, {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -375,9 +375,16 @@ function App() {
         body: JSON.stringify(form)
       })
 
-      fetchSistemas()
+      if (res.ok) {
+        setShowModal(false)
+        fetchSistemas()
+      } else {
+        const data = await res.json()
+        alert(data.error || 'Erro ao salvar')
+      }
     } catch (err) {
       console.error(err)
+      alert('Erro ao conectar')
     }
   }
 
