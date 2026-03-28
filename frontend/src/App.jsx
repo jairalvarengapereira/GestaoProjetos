@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Plus, LogOut, Server, Database, Globe, BookOpen, Edit, Trash2, Search, User, Users, Mail } from 'lucide-react'
+import { Plus, LogOut, Database, Globe, BookOpen, Edit, Trash2, Search, User, Users, Mail } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL || '/api'
 
@@ -414,7 +414,7 @@ function App() {
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
           <div className="text-center mb-6">
-            <Server className="w-12 h-12 mx-auto text-indigo-600 mb-2" />
+            <img src="/FluxoPro.png" alt="Fluxo Pro" className="w-24 h-24 mx-auto mb-2 object-contain" />
             <h1 className="text-2xl font-bold text-gray-800">Fluxo Pro</h1>
             <p className="text-gray-500">Catálogo de Infraestrutura</p>
           </div>
@@ -519,7 +519,7 @@ function App() {
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Server className="w-8 h-8 text-indigo-600" />
+            <img src="/FluxoPro.png" alt="Fluxo Pro" className="w-10 h-10 object-contain" />
             <div>
               <h1 className="text-xl font-bold text-gray-800">Fluxo Pro</h1>
               {empresa && <p className="text-xs text-gray-500">{empresa.nome}</p>}
@@ -634,7 +634,7 @@ function App() {
 
         {sistemas.length === 0 && (
           <div className="text-center py-12 text-gray-500">
-            <Server className="w-12 h-12 mx-auto mb-4 opacity-50" />
+            <img src="/FluxoPro.png" alt="Fluxo Pro" className="w-24 h-24 mx-auto mb-4 opacity-50 object-contain" />
             <p>Nenhum projeto encontrado</p>
           </div>
         )}
