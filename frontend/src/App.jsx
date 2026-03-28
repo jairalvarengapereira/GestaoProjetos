@@ -415,7 +415,7 @@ function App() {
         <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
           <div className="text-center mb-6">
             <Server className="w-12 h-12 mx-auto text-indigo-600 mb-2" />
-            <h1 className="text-2xl font-bold text-gray-800">InfraCat</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Fluxo Pro</h1>
             <p className="text-gray-500">Catálogo de Infraestrutura</p>
           </div>
 
@@ -521,7 +521,7 @@ function App() {
           <div className="flex items-center gap-3">
             <Server className="w-8 h-8 text-indigo-600" />
             <div>
-              <h1 className="text-xl font-bold text-gray-800">InfraCat</h1>
+              <h1 className="text-xl font-bold text-gray-800">Fluxo Pro</h1>
               {empresa && <p className="text-xs text-gray-500">{empresa.nome}</p>}
             </div>
           </div>
