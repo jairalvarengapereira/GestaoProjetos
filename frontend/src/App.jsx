@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Plus, LogOut, Database, Globe, BookOpen, Edit, Trash2, Search, User, Users, Mail } from 'lucide-react'
+import { Plus, LogOut, Database, Globe, BookOpen, Edit, Trash2, Search, User, Users, Mail, Eye, EyeOff } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL || '/api'
 
@@ -52,6 +52,7 @@ function App() {
   const [conviteInfo, setConviteInfo] = useState(null)
   const [conviteToken, setConviteToken] = useState('')
   const [conviteErro, setConviteErro] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   useEffect(() => {
     if (token) {
@@ -456,15 +457,24 @@ function App() {
                 onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
                 disabled={!conviteInfo}
               />
-              <input
-                type="password"
-                placeholder="Senha"
-                required
-                className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                value={registerForm.password}
-                onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
-                disabled={!conviteInfo}
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Senha"
+                  required
+                  className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent pr-10"
+                  value={registerForm.password}
+                  onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
+                  disabled={!conviteInfo}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
               
               {registerError && <p className="text-red-500 text-sm">{registerError}</p>}
               {registerSuccess && <p className="text-green-500 text-sm">{registerSuccess}</p>}
@@ -488,13 +498,22 @@ function App() {
                 value={loginForm.email}
                 onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
               />
-              <input
-                type="password"
-                placeholder="Senha"
-                className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                value={loginForm.password}
-                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Senha"
+                  className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent pr-10"
+                  value={loginForm.password}
+                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
               {loginError && <p className="text-red-500 text-sm">{loginError}</p>}
               <button type="submit" className="w-full bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition">
                 Entrar
@@ -844,13 +863,22 @@ function App() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Nova Senha (opcional)</label>
-                <input
-                  type="password"
-                  className="w-full border rounded-lg px-3 py-2"
-                  value={perfilForm.password}
-                  onChange={(e) => setPerfilForm({ ...perfilForm, password: e.target.value })}
-                  placeholder="Deixe em branco para manter a senha atual"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="w-full border rounded-lg px-3 py-2 pr-10"
+                    value={perfilForm.password}
+                    onChange={(e) => setPerfilForm({ ...perfilForm, password: e.target.value })}
+                    placeholder="Deixe em branco para manter a senha atual"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
               </div>
               {perfilError && <p className="text-red-500 text-sm">{perfilError}</p>}
               {perfilSuccess && <p className="text-green-500 text-sm">{perfilSuccess}</p>}
