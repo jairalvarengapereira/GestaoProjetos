@@ -85,6 +85,16 @@ async function initDB() {
       await client.query("INSERT INTO empresas (nome, slug, plano) VALUES ('Empresa Principal', 'empresa-principal', 'profissional')");
     }
 
+    const userResult = await client.query("SELECT COUNT(*) as count FROM usuarios WHERE role = 'admin'");
+    if (parseInt(userResult.rows[0].count) === 0) {
+      const hashedPassword = bcrypt.hashSync('admin123', 10);
+      await client.query(
+        "INSERT INTO usuarios (empresa_id, nome, email, password, role) VALUES (1, 'Administrador', 'admin@fluxopro.com', $1, 'admin')",
+        [hashedPassword]
+      );
+      console.log('Usuário admin criado: admin@fluxopro.com / admin123');
+    }
+
     console.log('Banco de dados inicializado com PostgreSQL');
   } catch (err) {
     console.error('Erro ao inicializar banco:', err);
