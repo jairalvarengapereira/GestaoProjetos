@@ -361,7 +361,6 @@ function App() {
 
   const saveSistema = async (e) => {
     e.preventDefault()
-    setShowModal(false)
     try {
       const method = editando ? 'PUT' : 'POST'
       const url = editando ? `${API_URL}/sistemas/${editando}` : `${API_URL}/sistemas`
@@ -377,6 +376,22 @@ function App() {
 
       if (res.ok) {
         setShowModal(false)
+        setForm({
+          nome: '',
+          ambiente: 'Desenvolvimento',
+          url_aplicacao: '',
+          api_base_url: '',
+          api_doc_url: '',
+          db_host: '',
+          db_port: '',
+          db_name: '',
+          db_user: '',
+          db_password: '',
+          string_conexao: '',
+          tecnologia: '',
+          observacoes: '',
+          status: 'Ativo'
+        })
         fetchSistemas()
       } else {
         const data = await res.json()
