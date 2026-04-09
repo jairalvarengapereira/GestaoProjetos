@@ -1,0 +1,23 @@
+{
+  "name": "Fluxo Pro - Gestão de Projetos",
+  "short_name": "Fluxo Pro",
+  "description": "Aplicação de gestão de projetos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "icons": [
+    {
+      "src": "/FluxoPro.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/FluxoPro.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
